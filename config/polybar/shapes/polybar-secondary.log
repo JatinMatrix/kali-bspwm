@@ -1,0 +1,34 @@
+polybar|notice:  Parsing config file: /home/reyser/.config/polybar/shapes/config.ini
+polybar|notice:  Listening for IPC messages (PID: 124001)
+polybar|warn:  Polybar was not compiled with xcursor support, ignoring cursor-click option
+polybar|warn:  Polybar was not compiled with xcursor support, ignoring cursor-scroll option
+polybar|warn:  The config parameter 'settings.throttle-output' is deprecated, it will be removed in the future. Please remove it from your config
+polybar|warn:  The config parameter 'settings.throttle-output-for' is deprecated, it will be removed in the future. Please remove it from your config
+polybar|notice:  Loading module 'cpu_bar' of type 'internal/cpu'
+polybar|notice:  Loading module 'sep' of type 'custom/text'
+polybar|warn:  The config parameter `module/sep.content` is deprecated, use `module/sep.format` instead.
+polybar|notice:  Loading module 'memory_bar' of type 'internal/memory'
+polybar|notice:  Loading module 'workspaces' of type 'internal/xworkspaces'
+polybar|notice:  Loading module 'google' of type 'custom/text'
+polybar|warn:  The config parameter `module/google.content` is deprecated, use `module/google.format` instead.
+polybar|notice:  Loading module 'reddit' of type 'custom/text'
+polybar|warn:  The config parameter `module/reddit.content` is deprecated, use `module/reddit.format` instead.
+polybar|notice:  Loading module 'twitter' of type 'custom/text'
+polybar|warn:  The config parameter `module/twitter.content` is deprecated, use `module/twitter.format` instead.
+polybar|notice:  Loading module 'github' of type 'custom/text'
+polybar|warn:  The config parameter `module/github.content` is deprecated, use `module/github.format` instead.
+polybar|notice:  Loading module 'gmail' of type 'custom/text'
+polybar|warn:  The config parameter `module/gmail.content` is deprecated, use `module/gmail.format` instead.
+polybar|notice:  Loaded 9 modules
+polybar|notice:  Loaded font "Iosevka Nerd Font:pixelsize=10" (name=Iosevka, offset=3, file=/home/reyser/.local/share/fonts/iosevka_nerd_font.ttf)
+polybar|notice:  Loaded font "Iosevka Nerd Font:style=Medium:size=22" (name=Iosevka, offset=5, file=/home/reyser/.local/share/fonts/iosevka_nerd_font.ttf)
+polybar|warn:  tray: bar/secondary.tray-position is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/secondary.tray-detached is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/secondary.tray-maxsize is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/secondary.tray-scale is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/secondary.tray-background is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/secondary.tray-padding is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/secondary.tray-offset-x is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/secondary.tray-offset-y is deprecated, use the dedicated tray module to display the system tray
+polybar|notice:  Received signal(15): Terminated
+polybar|notice:  Termination signal received, shutting down...

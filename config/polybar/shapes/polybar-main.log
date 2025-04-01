@@ -1,0 +1,43 @@
+polybar|notice:  Parsing config file: /home/reyser/.config/polybar/shapes/config.ini
+polybar|notice:  Listening for IPC messages (PID: 124000)
+polybar|warn:  Polybar was not compiled with xcursor support, ignoring cursor-click option
+polybar|warn:  Polybar was not compiled with xcursor support, ignoring cursor-scroll option
+polybar|warn:  The config parameter 'settings.throttle-output' is deprecated, it will be removed in the future. Please remove it from your config
+polybar|warn:  The config parameter 'settings.throttle-output-for' is deprecated, it will be removed in the future. Please remove it from your config
+polybar|notice:  Loading module 'launcher' of type 'custom/text'
+polybar|warn:  The config parameter `module/launcher.content` is deprecated, use `module/launcher.format` instead.
+polybar|notice:  Loading module 'left1' of type 'custom/text'
+polybar|warn:  The config parameter `module/left1.content` is deprecated, use `module/left1.format` instead.
+polybar|notice:  Loading module 'ethernet_status' of type 'custom/script'
+polybar|notice:  Loading module 'left2' of type 'custom/text'
+polybar|warn:  The config parameter `module/left2.content` is deprecated, use `module/left2.format` instead.
+polybar|notice:  Loading module 'vpn_status' of type 'custom/script'
+polybar|notice:  Loading module 'left3' of type 'custom/text'
+polybar|warn:  The config parameter `module/left3.content` is deprecated, use `module/left3.format` instead.
+polybar|notice:  Loading module 'workspaces' of type 'internal/xworkspaces'
+polybar|notice:  Loading module 'right4' of type 'custom/text'
+polybar|warn:  The config parameter `module/right4.content` is deprecated, use `module/right4.format` instead.
+polybar|notice:  Loading module 'htb_target' of type 'custom/script'
+polybar|notice:  Loading module 'right3' of type 'custom/text'
+polybar|warn:  The config parameter `module/right3.content` is deprecated, use `module/right3.format` instead.
+polybar|notice:  Loading module 'alsa' of type 'internal/alsa'
+polybar|notice:  Loading module 'right2' of type 'custom/text'
+polybar|warn:  The config parameter `module/right2.content` is deprecated, use `module/right2.format` instead.
+polybar|notice:  Loading module 'date' of type 'internal/date'
+polybar|notice:  Loading module 'right1' of type 'custom/text'
+polybar|warn:  The config parameter `module/right1.content` is deprecated, use `module/right1.format` instead.
+polybar|notice:  Loading module 'sysmenu' of type 'custom/text'
+polybar|warn:  The config parameter `module/sysmenu.content` is deprecated, use `module/sysmenu.format` instead.
+polybar|notice:  Loaded 15 modules
+polybar|notice:  Loaded font "Iosevka Nerd Font:pixelsize=10" (name=Iosevka, offset=3, file=/home/reyser/.local/share/fonts/iosevka_nerd_font.ttf)
+polybar|notice:  Loaded font "Iosevka Nerd Font:style=Medium:size=22" (name=Iosevka, offset=5, file=/home/reyser/.local/share/fonts/iosevka_nerd_font.ttf)
+polybar|warn:  tray: bar/main.tray-position is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/main.tray-detached is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/main.tray-maxsize is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/main.tray-scale is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/main.tray-background is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/main.tray-padding is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/main.tray-offset-x is deprecated, use the dedicated tray module to display the system tray
+polybar|warn:  tray: bar/main.tray-offset-y is deprecated, use the dedicated tray module to display the system tray
+polybar|notice:  Received signal(15): Terminated
+polybar|notice:  Termination signal received, shutting down...
