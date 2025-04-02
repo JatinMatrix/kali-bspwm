@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Nombre: mi-automatizacion-bspwm
+# Nombre: kali-bspwm
 # Autor: ReyserLyn (@reyserlyn)
 # Descripción: Instalación automatizada de bspwm con config personalizada
 # Versión: 1.0
@@ -18,7 +18,7 @@ grayColour="\e[0;37m\033[1m"
 
 # Global variables
 dir=$(pwd)
-fontdir="$HOME/.local/share/fonts"
+fontDir="$HOME/.local/share/fonts"
 user=$(whoami)
 
 trap ctrl_c INT
@@ -65,7 +65,7 @@ else
   # ---- Install necessary packages ----
   echo -e "\n\n${blueColour}[*] Installing necessary packages for the environment...\n${endColour}"
   sleep 2
-  sudo apt install -y curl wget fastfetch htop kitty rofi feh xclip ranger btop i3lock-fancy scrot scrub golang wmname imagemagick cmatrix python3-pip procps tty-clock fzf lsd bat pamixer flameshot firefox vlc bpytop jdk-openjdk python clang cargo
+  sudo apt install -y curl wget xinput fonts-crosextra-carlito feh fastfetch htop kitty rofi feh xclip ranger thunar btop i3lock-fancy scrot scrub golang wmname imagemagick cmatrix python3-pip procps tty-clock fzf lsd bat pamixer flameshot firefox vlc bpytop jdk-openjdk python clang cargo
   if [ $? != 0 ] && [ $? != 130 ]; then
     echo -e "\n\n${redColour}[!] Failed to install some packages!\n${endColour}"
     exit 1
@@ -258,11 +258,11 @@ else
   # ---- Install necessary nvim----
   echo -e "\n${purpleColour}[*] Installing neovim...\n${endColour}"
   sleep 2
-  git clone https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz
-
+  wget https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz
   tar -xzvf nvim-linux-x86_64.tar.gz -C /opt/
-  sudo ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
-
+  rm -f nvim-linux-x86_64.tar.gz
+  mv /opt/nvim-linux-x86_64 /opt/nvim
+  sudo ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim
   if [ $? != 0 ] && [ $? != 130 ]; then
     echo -e "\n${redColour}[-] Failed to install neovim!\n${endColour}"
     exit 1
@@ -290,7 +290,8 @@ else
   echo -e "\n${purpleColour}[*] Installing Oh My Zsh and Powerlevel10k for user $user...\n${endColour}"
   sleep 2
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+
   if [ $? != 0 ] && [ $? != 130 ]; then
     echo -e "\n${redColour}[-] Failed to install Oh My Zsh and Powerlevel10k for user $user!\n${endColour}"
     exit 1
@@ -303,7 +304,7 @@ else
   echo -e "\n${purpleColour}[*] Installing Oh My Zsh and Powerlevel10k for user root...\n${endColour}"
   sleep 2
   sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/.oh-my-zsh/custom/themes/powerlevel10k
+  sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
   if [ $? != 0 ] && [ $? != 130 ]; then
     echo -e "\n${redColour}[-] Failed to install Oh My Zsh and Powerlevel10k for user root!\n${endColour}"
     exit 1
@@ -312,6 +313,15 @@ else
     sleep 1.5
   fi
 
+  # ---- Configure zsh-sudo ----
+  echo -e "\n${purpleColour}[*] Configuring zsh-sudo...\n${endColour}"
+  sleep 2
+  sudo mkdir /usr/share/zsh-sudo/
+  wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/sudo/sudo.plugin.zsh -O /usr/share/zsh-sudo/zsh-sudo.zsh
+  sudo chmod +x /usr/share/zsh-sudo/zsh-sudo.zsh
+  echo -e "\n${greenColour}[+] Done\n${endColour}"
+  sleep 1.5
+
   # ---- Configure fonts, wallpaper, configuration files, .zshrc, .p10k.zsh, and scripts ----
   echo -e "\n${blueColour}[*] Starting configuration of fonts, wallpaper, configuration files, .zshrc, .p10k.zsh, and scripts...\n${endColour}"
   sleep 0.5
@@ -319,11 +329,11 @@ else
   # ---- Configure fonts ----
   echo -e "\n${purpleColour}[*] Configuring fonts...\n${endColour}"
   sleep 2
-  if [[ -d "$fdir" ]]; then
-    cp -rv $dir/fonts/* $fdir
+  if [[ -d "$fontDir" ]]; then
+    cp -rv $dir/fonts/* $fontDir
   else
-    mkdir -p $fdir
-    cp -rv $dir/fonts/* $fdir
+    mkdir -p $fontDir
+    cp -rv $dir/fonts/* $fontDir
   fi
   echo -e "\n${greenColour}[+] Done\n${endColour}"
   sleep 1.5
@@ -359,6 +369,26 @@ else
   echo -e "\n${greenColour}[+] Done\n${endColour}"
   sleep 1.5
 
+  # ---- Install nodejs with fnm ----
+  echo -e "\n${purpleColour}[*] Installing nodejs...\n${endColour}"
+  sleep 2
+  curl -o- https://fnm.vercel.app/install | bash
+  fnm install 22
+  if [ $? != 0 ] && [ $? != 130 ]; then
+    echo -e "\n${redColour}[-] Failed to install nodejs!\n${endColour}"
+    exit 1
+  else
+    echo -e "\n${greenColour}[+] Done\n${endColour}"
+    sleep 1.5
+  fi
+
+  # ---- Configure monitor configuration ----
+  echo -e "\n${purpleColour}[*] Configuring monitor configuration...\n${endColour}"
+  sleep 2
+  cp -v $dir/monitor.conf /etc/X11/xorg.conf.d/
+  echo -e "\n${greenColour}[+] Done\n${endColour}"
+  sleep 1.5
+
   # ---- Configure scripts ----
   echo -e "\n${purpleColour}[*] Configuring scripts...\n${endColour}"
   sleep 2
@@ -375,6 +405,7 @@ else
   chmod +x ~/.config/polybar/launch.sh
   chmod +x ~/.config/polybar/shapes/scripts/*
   chmod +x ~/.config/screenlayout/monitors.sh
+  chmod +x ~/.config/picom/picom.conf
   sudo chmod +x /usr/local/bin/whichSystem.py
   sudo chmod +x /usr/local/share/zsh/site-functions/_bspc
   sudo chown root:root /usr/local/share/zsh/site-functions/_bspc
@@ -390,6 +421,13 @@ else
   sleep 2
   rm -rfv ~/tools
   rm -rfv $dir
+  echo -e "\n${greenColour}[+] Done\n${endColour}"
+  sleep 1.5
+
+  # --- Select color environment ----
+  echo -e "\n${purpleColour}[*] Selecting color environment (indigo-dark)...\n${endColour}"
+  sleep 2
+  ~/.config/polybar/shapes/scripts/color-switch.sh
   echo -e "\n${greenColour}[+] Done\n${endColour}"
   sleep 1.5
 

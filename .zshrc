@@ -165,7 +165,11 @@ function rmk(){
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fnm
+FNM_PATH="/home/reyser/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --use-on-cd)"  
+
+  fnm use 22 --silent-if-unchanged 2>/dev/null || fnm install 22 && fnm use 22 --silent-if-unchanged 2>/dev/null
+fi
