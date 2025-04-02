@@ -172,6 +172,19 @@ else
     sleep 1.5
   fi
 
+  # ---- Install OnlyOffice ----
+  echo -e "\n${purpleColour}[*] Installing OnlyOffice...\n${endColour}"
+  sleep 2
+  wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+  sudo dpkg -i onlyoffice-desktopeditors_amd64.deb
+  if [ $? != 0 ] && [ $? != 130 ]; then
+    echo -e "\n${redColour}[-] Failed to install OnlyOffice!\n${endColour}"
+    exit 1
+  else
+    echo -e "\n${greenColour}[+] Done\n${endColour}"
+    sleep 1.5
+  fi
+
   # ---- Install bspwm ----
   echo -e "\n${purpleColour}[*] Installing bspwm...\n${endColour}"
   sleep 2
