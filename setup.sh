@@ -259,10 +259,11 @@ else
   echo -e "\n${purpleColour}[*] Installing neovim...\n${endColour}"
   sleep 2
   wget https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz
-  tar -xzvf nvim-linux-x86_64.tar.gz -C /opt/
-  rm -f nvim-linux-x86_64.tar.gz
-  mv /opt/nvim-linux-x86_64 /opt/nvim
-  sudo ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim
+  sudo tar -xzvf nvim-linux-x86_64.tar.gz -C /opt/
+  sudo rm -f nvim-linux-x86_64.tar.gz
+  sudo mv -f /opt/nvim-linux-x86_64 /opt/nvim
+  sudo rm -f /usr/local/bin/nvim
+  sudo ln -sfv /opt/nvim/bin/nvim /usr/local/bin/nvim
   if [ $? != 0 ] && [ $? != 130 ]; then
     echo -e "\n${redColour}[-] Failed to install neovim!\n${endColour}"
     exit 1
@@ -289,6 +290,7 @@ else
   # ---- Install Oh My Zsh and Powerlevel10k ----
   echo -e "\n${purpleColour}[*] Installing Oh My Zsh and Powerlevel10k for user $user...\n${endColour}"
   sleep 2
+  sudo rm -rfd ~/powerlevel10k
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
@@ -303,6 +305,7 @@ else
   # ---- Install Oh My Zsh and Powerlevel10k for root ----
   echo -e "\n${purpleColour}[*] Installing Oh My Zsh and Powerlevel10k for user root...\n${endColour}"
   sleep 2
+  sudo rm -rfd /root/powerlevel10k
   sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
   if [ $? != 0 ] && [ $? != 130 ]; then
@@ -317,7 +320,7 @@ else
   echo -e "\n${purpleColour}[*] Configuring zsh-sudo...\n${endColour}"
   sleep 2
   sudo mkdir /usr/share/zsh-sudo/
-  wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/sudo/sudo.plugin.zsh -O /usr/share/zsh-sudo/zsh-sudo.zsh
+  sudo wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/sudo/sudo.plugin.zsh -O /usr/share/zsh-sudo/zsh-sudo.zsh
   sudo chmod +x /usr/share/zsh-sudo/zsh-sudo.zsh
   echo -e "\n${greenColour}[+] Done\n${endColour}"
   sleep 1.5
@@ -373,7 +376,7 @@ else
   echo -e "\n${purpleColour}[*] Installing nodejs...\n${endColour}"
   sleep 2
   curl -o- https://fnm.vercel.app/install | bash
-  fnm install 22
+  ~/.local/share/fnm/fnm install 22
   if [ $? != 0 ] && [ $? != 130 ]; then
     echo -e "\n${redColour}[-] Failed to install nodejs!\n${endColour}"
     exit 1
@@ -385,7 +388,7 @@ else
   # ---- Configure monitor configuration ----
   echo -e "\n${purpleColour}[*] Configuring monitor configuration...\n${endColour}"
   sleep 2
-  cp -v $dir/monitor.conf /etc/X11/xorg.conf.d/
+  sudo cp -v $dir/monitor.conf /etc/X11/xorg.conf.d/
   echo -e "\n${greenColour}[+] Done\n${endColour}"
   sleep 1.5
 
