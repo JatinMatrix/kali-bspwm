@@ -415,6 +415,7 @@ else
   sudo mkdir -p /root/.config/polybar/shapes/scripts/
   sudo touch /root/.config/polybar/shapes/scripts/target
   sudo ln -sfv ~/.config/polybar/shapes/scripts/target /root/.config/polybar/shapes/scripts/target
+  sudo cp -rf ~/.config/nvim /root/.config/
   cd ..
   echo -e "\n${greenColour}[+] Done\n${endColour}"
   sleep 1.5
