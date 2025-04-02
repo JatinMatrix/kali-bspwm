@@ -65,7 +65,7 @@ else
   # ---- Install necessary packages ----
   echo -e "\n\n${blueColour}[*] Installing necessary packages for the environment...\n${endColour}"
   sleep 2
-  sudo apt install -y curl wget xinput fonts-crosextra-carlito feh fastfetch htop kitty rofi feh xclip ranger thunar btop i3lock-fancy scrot scrub golang wmname imagemagick cmatrix python3-pip procps tty-clock fzf lsd bat pamixer flameshot firefox vlc bpytop jdk-openjdk python clang cargo
+  sudo apt install -y curl wget xinput fonts-crosextra-carlito fastfetch htop kitty rofi feh xclip ranger thunar btop i3lock-fancy scrot scrub golang wmname imagemagick cmatrix python3-pip python3 procps tty-clock fzf lsd bat pamixer flameshot bpytop clang cargo
   if [ $? != 0 ] && [ $? != 130 ]; then
     echo -e "\n\n${redColour}[!] Failed to install some packages!\n${endColour}"
     exit 1
