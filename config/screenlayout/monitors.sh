@@ -1,32 +1,18 @@
 #!/bin/bash
 
-# Nombre del monitor DisplayPort (ajusta según tu sistema)
-DP_PORT="DisplayPort-1"
+# Configuración para DisplayPort-0 (monitor izquierdo)
+xrandr --output DisplayPort-0 --mode 1360x768 --pos 0x0 --rate 60
 
-# Verificar si el monitor DisplayPort está conectado
-if ! xrandr | grep -q "$DP_PORT connected"; then
-    echo "Error: $DP_PORT no está conectado"
-    exit 1
-fi
+# Configuración para HDMI-A-0 (monitor principal derecho)
+xrandr --output HDMI-A-0 --primary --mode 1920x1080 --rate 165 --pos 1360x0
 
-# Crear y agregar modo 1920x1080@60Hz si no existe
+# Configuración alternativa si prefieres forzar 1920x1080 en ambos:
+# 1. Primero verifica si el modo ya existe
 if ! xrandr | grep -q "1920x1080_60.00"; then
-    echo "Creando nuevo modo 1920x1080@60Hz..."
-    MODELINE=$(cvt 1920 1080 60 | grep Modeline | cut -d' ' -f2-)
-    xrandr --newmode "1920x1080_60.00" $MODELINE
-    xrandr --addmode $DP_PORT "1920x1080_60.00"
+    xrandr --newmode "1920x1080_60.00" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync
+    xrandr --addmode DisplayPort-0 "1920x1080_60.00"
 fi
 
-# Configurar monitor DisplayPort (izquierdo)
-xrandr --output $DP_PORT --mode "1920x1080_60.00" --pos 0x0
-
-# Configurar monitor HDMI (derecho) si está conectado
-if xrandr | grep -q "HDMI-A-0 connected"; then
-    xrandr --output HDMI-A-0 --primary --mode 1920x1080 --rate 165 --pos 1920x0
-else
-    echo "HDMI-A-0 no conectado, configurando solo $DP_PORT"
-fi
-
-echo "Configuración aplicada correctamente:"
-echo "- $DP_PORT: 1920x1080@60Hz (izquierdo)"
-echo "- HDMI-A-0: 1920x1080@165Hz (derecho, primario)"
+# 2. Aplica la configuración
+xrandr --output DisplayPort-0 --mode "1920x1080_60.00" --pos 0x0 \
+    --output HDMI-A-0 --primary --mode 1920x1080 --rate 165 --pos 1920x0
