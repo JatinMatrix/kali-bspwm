@@ -42,7 +42,7 @@ bspc rule -a Screenkey manage=off
 
 picom --config ~/.config/picom/picom.conf &
 
-feh --bg-fill ~/wallpapers/fondo-morado.png --bg-fill ~/wallpapers/fondo3.png &
+feh --bg-fill ~/Wallpapers/fondo-morado.png --bg-fill ~/Wallpapers/fondo3.png &
 
 # Configuración del mouse
 xinput --set-prop 10 "libinput Accel Profile Enabled" 0, 1
